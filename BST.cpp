@@ -15,7 +15,7 @@ Node* createNode(int value) {
     return newNode;
 }
 
-// Insert into BST
+// Insert into bst
 Node* insert(Node* root, int value) {
 
     // If tree empty
@@ -36,4 +36,26 @@ Node* insert(Node* root, int value) {
     }
 
     return root;
+}
+
+// Search for a value in the tree
+bool search(Node* root, int value) {
+
+    // If tree empty
+    if (root == NULL) {
+        return false;
+    }
+
+    // Found the number
+    if (root->data == value) {
+        return true;
+    }
+
+    // Search left
+    if (value < root->data) {
+        return search(root->left, value);
+    }
+
+    // Search right
+    return search(root->right, value);
 }

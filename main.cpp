@@ -11,7 +11,7 @@ int main() {
 
     cout << "Enter numbers (0 to stop): ";
 
-    // Read numbers separated by spaces
+    // Insert numbers
     while (cin >> number && number != 0) {
 
         if (number >= 1 && number <= 999) {
@@ -19,7 +19,16 @@ int main() {
         }
     }
 
-    cout << "Numbers inserted.\n";
+    // Now test searching
+    cout << "Enter number to search: ";
+    cin >> number;
+
+    if (search(root, number)) {
+        cout << "Number FOUND\n";
+    }
+    else {
+        cout << "Number NOT found\n";
+    }
 
     return 0;
 }
