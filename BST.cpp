@@ -160,4 +160,14 @@ Node* removeNode(Node* root, int value) {
 
     return root;
 }
+void deleteTree(Node* root) {
 
+    if (root == NULL) {
+        return;
+    }
+
+    deleteTree(root->left);
+    deleteTree(root->right);
+
+    delete root;
+}

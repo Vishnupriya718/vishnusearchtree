@@ -13,39 +13,66 @@ int main() {
     cout << "Commands:\n";
     cout << "A number → Add\n";
     cout << "R number → Remove\n";
+    cout << "S number → Search\n";
     cout << "P → Print\n";
     cout << "Q → Quit\n";
 
     while (true) {
 
+        cout << "\nEnter command: ";
         cin >> command;
 
-        // Add
+        // ADD
         if (command == 'A') {
 
             cin >> number;
-            root = insert(root, number);
+
+            if (number >= 1 && number <= 999) {
+                root = insert(root, number);
+            }
+            else {
+                cout << "Number must be 1-999\n";
+            }
         }
 
-        // Remove
+        // REMOVE
         else if (command == 'R') {
 
             cin >> number;
             root = removeNode(root, number);
         }
 
-        // Print
+        // SEARCH
+        else if (command == 'S') {
+
+            cin >> number;
+
+            if (search(root, number)) {
+                cout << "Found\n";
+            }
+            else {
+                cout << "Not found\n";
+            }
+        }
+
+        // PRINT
         else if (command == 'P') {
 
+            cout << "\nTree:\n";
             printTree(root, 0);
         }
 
-        // Quit
+        // QUIT
         else if (command == 'Q') {
 
             break;
         }
+
+        else {
+            cout << "Invalid command\n";
+        }
     }
+    deleteTree(root);
 
     return 0;
 }

@@ -17,4 +17,5 @@ Node* findMin(Node* root);
 
 void printTree(Node* root, int space);
 
+void deleteTree(Node* root);
 #endif
