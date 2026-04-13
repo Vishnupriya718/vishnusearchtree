@@ -16,13 +16,31 @@ int main() {
     cout << "S number → Search\n";
     cout << "P → Print\n";
     cout << "Q → Quit\n";
-
+    cout << "I numbers → Insert multiple\n";
     while (true) {
 
         cout << "\nEnter command: ";
         cin >> command;
+  
+        // insert multiple numbers
+	if (command =='I') {
 
-        // ADD
+	    cout << "Enter numbers (0 to stop): "; 
+
+	    while (cin >> number && number != 0) {
+
+	       if (number >= 1 && number <= 999) {
+	           root = insert(root, number);
+	       }
+	       else {
+		 cout << " Number must be 1-999\n";
+
+	       }
+	    }
+	}    
+
+
+	// ADD
         if (command == 'A') {
 
             cin >> number;
