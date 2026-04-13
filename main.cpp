@@ -7,27 +7,44 @@ int main() {
 
     Node* root = NULL;
 
+    char command;
     int number;
 
-    cout << "Enter numbers (0 to stop): ";
+    cout << "Commands:\n";
+    cout << "A number → Add\n";
+    cout << "R number → Remove\n";
+    cout << "P → Print\n";
+    cout << "Q → Quit\n";
 
-    // Insert numbers
-    while (cin >> number && number != 0) {
+    while (true) {
 
-        if (number >= 1 && number <= 999) {
+        cin >> command;
+
+        // Add
+        if (command == 'A') {
+
+            cin >> number;
             root = insert(root, number);
         }
-    }
 
-    // Now test searching
-    cout << "Enter number to search: ";
-    cin >> number;
+        // Remove
+        else if (command == 'R') {
 
-    if (search(root, number)) {
-        cout << "Number FOUND\n";
-    }
-    else {
-        cout << "Number NOT found\n";
+            cin >> number;
+            root = removeNode(root, number);
+        }
+
+        // Print
+        else if (command == 'P') {
+
+            printTree(root, 0);
+        }
+
+        // Quit
+        else if (command == 'Q') {
+
+            break;
+        }
     }
 
     return 0;
