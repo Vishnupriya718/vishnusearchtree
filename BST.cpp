@@ -93,7 +93,8 @@ Node* findMin(Node* root) {
 
     return root;
 }
-    // Remove node  ( start  with leaf case)
+
+// Remove node (Case 1 + Case 2 + Case 3)
 Node* removeNode(Node* root, int value) {
 
     if (root == NULL) {
@@ -122,7 +123,41 @@ Node* removeNode(Node* root, int value) {
             delete root;
             return NULL;
         }
+
+        // CASE 2 — One child (right)
+        else if (root->left == NULL) {
+
+            Node* temp = root->right;
+            delete root;
+            return temp;
+        }
+
+        // CASE 2 — One child (left)
+        else if (root->right == NULL) {
+
+            Node* temp = root->left;
+            delete root;
+            return temp;
+	    
+        }
+	// CASE 3 — Two children
+	else {
+
+            // Step 1: find successor
+            Node* temp = findMin(root->right);
+
+            // Step 2: copy value
+            root->data = temp->data;
+
+            // Step 3: delete successor
+            root->right =
+                removeNode(root->right,
+                           temp->data);
+	    
     }
+
+  }
 
     return root;
 }
+
